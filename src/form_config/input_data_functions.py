@@ -3,7 +3,7 @@ from os.path import join as os_path_join
 from os import getcwd
 
 
-import web_driver
+from . import web_driver
 
 
 def input_data(locator, data):
