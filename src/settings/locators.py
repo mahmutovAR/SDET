@@ -26,7 +26,7 @@ class FormFieldLocator:
     def get_mobile_field(self):
         return self.driver.find_element(By.ID, 'userNumber')
 
-    def get_birth_date_datepicker(self):
+    def get_birth_date_date_picker(self):
         return self.driver.find_element(By.XPATH, "//input[@id='dateOfBirthInput']")
 
     def get_subjects_field(self):

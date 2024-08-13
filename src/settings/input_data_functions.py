@@ -1,9 +1,7 @@
-from selenium.webdriver.common.keys import Keys
-from os.path import join as os_path_join
 from os import getcwd
+from os.path import join as os_path_join
 
-
-from . import web_driver
+from selenium.webdriver.common.keys import Keys
 
 
 def input_data(locator, data):
@@ -21,8 +19,9 @@ def remove_default_value_and_input_data(locator, data):
     locator.send_keys(Keys.ENTER)
 
 
-def select_option(locator):
-    web_driver.scroll_to_element(locator)
+def select_option(driver, locator):
+    js_scroll_code = "arguments[0].scrollIntoView();"
+    driver.execute_script(js_scroll_code, locator)
     locator.click()
 
 
