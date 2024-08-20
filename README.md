@@ -10,6 +10,7 @@ Application for testing the **Student Registration Form**
 * `beautifulsoup4` (tested to work with == 4.12.3)  
 * `selenium` (tested to work with == 4.23.0)  
 * `pytest` (tested to work with ==8.3.1)  
+* `pytest-xdist` (tested to work with ==3.6.1)  
 * `rstr` (tested to work with ==3.2.2)  
 * `selenium` (tested to work with == 4.23.0)  
 * `lxml` (tested to work with == 5.2.2)  

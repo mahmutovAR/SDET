@@ -19,59 +19,65 @@ STATE_CITY = {'NCR': ['Delhi', 'Gurgaon', 'Noida'],
               'Haryana': ['Karnal', 'Panipat'],
               'Rajasthan': ['Jaipur', 'Jaiselmer']}
 
+PICTURE = picture_path = [os_path_join(Path(__file__).resolve().parents[1], 'pictures', 'ebersteiger.jpg'),
+                          os_path_join(Path(__file__).resolve().parents[1], 'pictures', 'gl-ramos'),
+                          os_path_join(Path(__file__).resolve().parents[1], 'pictures', 'Lorem ipsum')]
+
 
 def generate_name() -> str:
+    """Returns a string value."""
     name_1 = rstr.letters(4, 8).title()
     name_2 = rstr.letters(0, 3).title()
     name_3 = rstr.letters(3, 6).title()
-    return f"{name_1} {name_2}.{name_3}"
+    return f"{name_1} {name_2} {name_3}"
 
 
 def generate_email() -> str:
+    """Returns a string matching the email address pattern."""
     user_name = rstr.normal(12, include=['-', '_'], exclude=' ')
     domain_1 = rstr.domainsafe(8)
     domain_2 = rstr.letters(3)
     return f"{user_name}@{domain_1}.{domain_2}"
 
 
-def generate_gender():
+def generate_gender() -> str:
+    """Returns a random value from the specified list."""
     return choice(GENDER)
 
 
 def generate_mobile_number() -> str:
+    """Returns a string matching the mobile number pattern."""
     return rstr.digits(10)
 
 
-def generate_birth_date() -> str:
+def generate_birth_date() -> list:
+    """Returns date in 'yyyy' 'mm' 'dd' format as a list."""
     calendar_start = date(1900, 1, 1)
     calendar_end = date(2100, 12, 31)
     days_range = (calendar_end - calendar_start).days
     random_diff = randrange(0, days_range + 1)
-    b_year, b_month, b_day = str(calendar_start + timedelta(days=random_diff)).split('-')
-    months = {1: 'January', 2: 'February', 3: 'March', 4: 'April',
-              5: 'May', 6: 'June', 7: 'July', 8: 'August',
-              9: 'September', 10: 'October', 11: 'November', 12: 'December'}
-    return f'{b_day} {months[int(b_month)]},{b_year}'
+    return str(calendar_start + timedelta(days=random_diff)).split('-')
 
 
-def generate_subjects():
+def generate_subjects() -> list:
+    """Returns a random list of elements from the specified list."""
     num = randrange(0, len(SUBJECTS))
     return sample(SUBJECTS, k=num)
 
 
-def generate_hobbies():
+def generate_hobbies() -> list:
+    """Returns a random list of elements from the specified list."""
     num = randrange(0, len(HOBBIES))
     return sample(HOBBIES, k=num)
 
 
-def generate_picture():
-    picture_path = [os_path_join(Path(__file__).resolve().parents[1], 'pictures', 'ebersteiger.jpg'),
-                    os_path_join(Path(__file__).resolve().parents[1], 'pictures', 'gl-ramos'),
-                    os_path_join(Path(__file__).resolve().parents[1], 'pictures', 'Lorem ipsum')]
-    return choice(picture_path)
+def generate_picture() -> str:
+    """Returns a random value from the specified list of paths."""
+    return choice(PICTURE)
 
 
 def generate_address() -> str:
+    """Returns a string matching the address pattern."""
     address_1 = rstr.uppercase(6, 8)
     address_2 = rstr.letters(4, 12).title()
     address_3 = rstr.letters(6, 15).title()
@@ -81,12 +87,14 @@ def generate_address() -> str:
 
 
 def generate_state_city() -> (str, str):
+    """Returns a random pair value from the specified dictionary."""
     state = choice(list(STATE_CITY.keys()))
     city = choice(STATE_CITY[state])
     return state, city
 
 
-def get_full_form_data():
+def get_form_data() -> dict:
+    """Returns the generated form data."""
     state, city = generate_state_city()
     return {'first_name': generate_name(),
             'last_name': generate_name(),
@@ -100,7 +108,3 @@ def get_full_form_data():
             'address': generate_address(),
             'state': state,
             'city': city}
-
-
-def get_required_form_data():
-    pass
