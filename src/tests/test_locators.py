@@ -1,5 +1,6 @@
 from random import choice
 from time import sleep
+# from allure.dynamic import
 
 from bs4 import BeautifulSoup
 from pytest import fixture, raises
@@ -11,6 +12,9 @@ from src.settings.fill_in_form_fields import select_date
 
 
 def test_form_fields_locators(set_up: fixture):
+    # title("Test Locators")
+    # description("Tests locators to find all available form fields.")
+    # severity(allure.severity_level.CRITICAL)
     """."""
     data, driver = set_up
     driver.get_driver().find_element(*FormFieldsLocators.first_name_field)

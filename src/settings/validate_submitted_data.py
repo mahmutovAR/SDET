@@ -80,35 +80,34 @@ def validate_entered_form_data(driver, ini_data: dict) -> None:
     output_state_and_city = output_data['State and City']
 
     if ini_full_name.strip() != output_full_name.strip():
-        raise EnteredDataValidationError('Full name does not match')
+        raise EnteredDataValidationError('Full name')
 
     elif ini_email != output_email:
-        raise EnteredDataValidationError('Email does not match')
+        raise EnteredDataValidationError('Email')
 
     elif ini_gender != output_gender:
-        raise EnteredDataValidationError('Gender does not match')
+        raise EnteredDataValidationError('Gender')
 
     elif ini_mobile != output_mobile:
-        raise EnteredDataValidationError('Mobile number does not match')
+        raise EnteredDataValidationError('Mobile')
 
     elif ini_birth_date != output_birth_date:
-        print(f'birth_date = {ini_birth_date} | {output_birth_date}')
-        raise EnteredDataValidationError('Birth date does not match')
+        raise EnteredDataValidationError('Birth date')
 
-    elif ini_subjects != output_subjects:
-        raise EnteredDataValidationError('Subjects do not match')
+    elif sorted(ini_subjects) != sorted(output_subjects):
+        raise EnteredDataValidationError('Subjects')
 
-    elif ini_hobbies != output_hobbies:
-        raise EnteredDataValidationError('Hobbies do not match')
+    elif sorted(ini_hobbies) != sorted(output_hobbies):
+        raise EnteredDataValidationError('Hobbies')
 
     elif ini_picture != output_picture:
-        raise EnteredDataValidationError('Picture does not match')
+        raise EnteredDataValidationError('Picture')
 
     elif ini_address.strip() != output_address.strip():
-        raise EnteredDataValidationError('Address does not match')
+        raise EnteredDataValidationError('Address')
 
     elif ini_state_and_city != output_state_and_city:
-        raise EnteredDataValidationError('State and City do not match')
+        raise EnteredDataValidationError('State and City')
 
     else:
         print('Form data has been submitted')

@@ -12,6 +12,7 @@ class FormFieldsLocators:
     gender_other_radiobutton = (By.XPATH, "//label[@for='gender-radio-3']")
     mobile_field = (By.ID, "userNumber")
     birth_date_field = (By.XPATH, "//input[@id='dateOfBirthInput']")
+    calendar = (By.CLASS_NAME, "react-datepicker__month-container")
     subjects_field = (By.CSS_SELECTOR, "input[id=subjectsInput]")
     subject_is_valid = (By.XPATH, "//div[contains(@class, 'subjects-auto-complete__menu')]")
     hobby_sports_checkbox = (By.XPATH, "//label[@for='hobbies-checkbox-1']")

@@ -32,10 +32,9 @@ INVALID_BIRTH_DATE = {'27 . 03 . 1952': ['1952', '03', '27'],
 @mark.parametrize("valid_birth_date", VALID_BIRTH_DATE)
 def test_valid_birth_date(set_up: fixture, valid_birth_date: str):
     data, driver = set_up
-    ini_data = data.copy()
-    ini_data['birth_date'] = valid_birth_date
+    data['birth_date'] = valid_birth_date
 
-    user_form = StudentRegistrationForm(driver.get_driver(), **ini_data)
+    user_form = StudentRegistrationForm(driver.get_driver(), **data)
     user_form.enter_firstname()
     user_form.enter_last_name()
     user_form.enter_email()
@@ -49,7 +48,6 @@ def test_valid_birth_date(set_up: fixture, valid_birth_date: str):
     user_form.select_state()
     user_form.select_city()
     user_form.submit_form()
-
     data['birth_date'] = VALID_BIRTH_DATE[valid_birth_date]
     validate_entered_form_data(driver.get_driver(), data)
 
@@ -57,10 +55,9 @@ def test_valid_birth_date(set_up: fixture, valid_birth_date: str):
 @mark.parametrize("invalid_birth_date", INVALID_BIRTH_DATE)
 def test_invalid_birth_date(set_up: fixture, invalid_birth_date: str):
     data, driver = set_up
-    ini_data = data.copy()
-    ini_data['birth_date'] = invalid_birth_date
+    data['birth_date'] = invalid_birth_date
 
-    user_form = StudentRegistrationForm(driver.get_driver(), **ini_data)
+    user_form = StudentRegistrationForm(driver.get_driver(), **data)
     user_form.enter_firstname()
     user_form.enter_last_name()
     user_form.enter_email()

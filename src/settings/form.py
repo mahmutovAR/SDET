@@ -65,8 +65,8 @@ class StudentRegistrationForm:
 
     def enter_subjects(self):
         if self.subjects:
-            field = self.driver.find_element(*FormFieldsLocators.subjects_field)
             for subject in self.subjects:
+                field = self.driver.find_element(*FormFieldsLocators.subjects_field)
                 enter_and_select_subject(self.driver, field, subject)
 
     def select_hobby(self):
