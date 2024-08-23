@@ -10,7 +10,7 @@ from .locators import FormFieldsLocators
 
 
 class StudentRegistrationForm:
-    """Class for filling form fields with generated data using predefined locators."""
+    """Class for filling form fields with generated data using appropriate locators."""
 
     def __init__(self, driver, first_name: str, last_name: str, email: str, gender: str,
                  mobile: str, birth_date: list, subjects: list, hobbies: list,

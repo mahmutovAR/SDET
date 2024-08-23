@@ -3,6 +3,7 @@ from selenium import webdriver
 
 class WebDriverSDET:
     """Class to start local driver, get specified URL and quit after test case running."""
+
     def __init__(self):
         self.web_driver = webdriver.Chrome()
         self.form_url = 'https://demoqa.com/automation-practice-form'
