@@ -1,3 +1,4 @@
+import allure
 from pytest import fixture, mark, raises
 
 from src.errors import EnteredDataValidationError
@@ -31,33 +32,34 @@ INVALID_BIRTH_DATE = {'27 . 03 . 1952': ['1952', '03', '27'],
 
 @mark.parametrize("valid_birth_date", VALID_BIRTH_DATE)
 def test_valid_birth_date(set_up: fixture, valid_birth_date: str):
+    """Tests the input of a date of a valid format as text data in a field."""
+    allure.dynamic.feature("Date of Birth field")
+    allure.dynamic.title("Valid date format")
+
     data, driver = set_up
     data['birth_date'] = valid_birth_date
-
-    user_form = StudentRegistrationForm(driver.get_driver(), **data)
-    user_form.enter_firstname()
-    user_form.enter_last_name()
-    user_form.enter_email()
-    user_form.select_gender()
-    user_form.enter_mobile()
-    user_form.enter_birth_date()
-    user_form.enter_subjects()
-    user_form.select_hobby()
-    user_form.upload_picture()
-    user_form.enter_address()
-    user_form.select_state()
-    user_form.select_city()
-    user_form.submit_form()
+    fill_in_form_fields(driver, data)
     data['birth_date'] = VALID_BIRTH_DATE[valid_birth_date]
-    validate_entered_form_data(driver.get_driver(), data)
+    validate_entered_form_data(driver, data)
 
 
 @mark.parametrize("invalid_birth_date", INVALID_BIRTH_DATE)
 def test_invalid_birth_date(set_up: fixture, invalid_birth_date: str):
+    """Tests the input of a date of an invalid format as text data in a field."""
+    allure.dynamic.feature("Date of Birth field")
+    allure.dynamic.title("Invalid date format")
+
     data, driver = set_up
     data['birth_date'] = invalid_birth_date
+    fill_in_form_fields(driver, data)
+    data['birth_date'] = INVALID_BIRTH_DATE[invalid_birth_date]
+    with raises(EnteredDataValidationError):
+        validate_entered_form_data(driver, data)
 
-    user_form = StudentRegistrationForm(driver.get_driver(), **data)
+
+def fill_in_form_fields(input_driver, input_data) -> None:
+    """Fills out the form with the specified data."""
+    user_form = StudentRegistrationForm(input_driver, **input_data)
     user_form.enter_firstname()
     user_form.enter_last_name()
     user_form.enter_email()
@@ -71,7 +73,3 @@ def test_invalid_birth_date(set_up: fixture, invalid_birth_date: str):
     user_form.select_state()
     user_form.select_city()
     user_form.submit_form()
-
-    data['birth_date'] = INVALID_BIRTH_DATE[invalid_birth_date]
-    with raises(EnteredDataValidationError):
-        validate_entered_form_data(driver.get_driver(), data)
