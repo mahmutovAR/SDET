@@ -23,7 +23,6 @@ def main():
 def set_up_allure_report():
     if not isdir(FILES_DIR):
         mkdir(FILES_DIR)
-        print('  1> make dir')
 
     with open(ENVIRONMENT_FILE, 'w') as env_file:
         for line in ENVIRONMENT_INFORMATION:

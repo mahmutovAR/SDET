@@ -21,11 +21,9 @@ then the `State and city` value in the popup window is empty.
 
 ## Requirements
 To use the application, you must have [Python 3](https://www.python.org/downloads/) 
-and [Allure](https://allurereport.org/docs/install/) installed on your operating system.
-
+and [Allure](https://allurereport.org/docs/install/) installed on your operating system.  
 `Python` (tested to work with == 3.10.14)  
-`Allure` (tested to work with == 2.30.0)  
-
+`Allure` (tested to work with == 2.30.0)
 
 **Python packages**
 * `allure-pytest` (tested to work with ==2.13.5)  
@@ -57,12 +55,15 @@ and `allure-pytest` is used for visualizing the results of a test run.
 
 
 ### Files and directories:
-* `src/allure_report/`  test report directory
+- `src/allure-report/index.html` allure report
+- `src/allure_files/` test results directory  
+**Note:** Allure report files will be generated after running `sdet2024_testing.py`
+
 * `src/errors/` exception modules
 * `src/pictures/` test pictures
 * `src/settings/` plugin modules
 * `src/tests/` test modules
 * `src/run_sdet2024.py` sdet2024 launcher
-* `src/app_testing.py` tests launcher
-* `task/SDET_2024.pdf` test task description
+* `src/sdet2024_testing.py` tests launcher
+* `task/SDET_2024.pdf` task description
 * `requirements.txt` required packages
